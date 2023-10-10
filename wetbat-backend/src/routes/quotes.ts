@@ -1,81 +1,12 @@
-import express, { Request, Response } from "express"
-import Quote from "../models/Quote"
+import express from "express"
+import * as QuoteController from "../controllers/quoteController"
 
 const router = express.Router()
 
-router.post("/", async (req: Request, res: Response) => {
-  try {
-    const {
-      originAirportId,
-      destinationAirportId,
-      departureDate,
-      returnDate,
-      transportationType,
-    } = req.body
-    const quote = await Quote.create({
-      originAirportId,
-      destinationAirportId,
-      departureDate,
-      returnDate,
-      transportationType,
-    })
-    res.status(201).json(quote)
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ message: "Error creating quote" })
-  }
-})
-
-router.get("/", async (req: Request, res: Response) => {
-  try {
-    const quotes = await Quote.findAll()
-    res.status(200).json(quotes)
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ message: "Error fetching quotes" })
-  }
-})
-
-router.put("/:id", async (req: Request, res: Response) => {
-  const { id } = req.params
-  const {
-    originAirportId,
-    destinationAirportId,
-    departureDate,
-    returnDate,
-    transportationType,
-  } = req.body
-  try {
-    const quote = await Quote.findByPk(id)
-    if (!quote) {
-      return res.status(404).json({ message: "Quote not found" })
-    }
-    quote.originAirportId = originAirportId
-    quote.destinationAirportId = destinationAirportId
-    quote.departureDate = departureDate
-    quote.returnDate = returnDate
-    quote.transportationType = transportationType
-    await quote.save()
-    res.status(200).json(quote)
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ message: "Error updating quote" })
-  }
-})
-
-router.delete("/:id", async (req: Request, res: Response) => {
-  const { id } = req.params
-  try {
-    const quote = await Quote.findByPk(id)
-    if (!quote) {
-      return res.status(404).json({ message: "Quote not found" })
-    }
-    await quote.destroy()
-    res.status(204).json()
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ message: "Error deleting quote" })
-  }
-})
+router.post("/", QuoteController.createQuote)
+router.get("/", QuoteController.getAllQuotes)
+router.get("/:id", QuoteController.getQuoteById)
+router.put("/:id", QuoteController.updateQuote)
+router.delete("/:id", QuoteController.deleteQuote)
 
 export default router

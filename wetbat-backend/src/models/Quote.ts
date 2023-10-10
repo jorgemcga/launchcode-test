@@ -9,7 +9,9 @@ class Quote extends Model {
   public destinationAirportId!: number
   public departureDate!: Date
   public returnDate!: Date
-  public transportationType!: string
+  public transportationTypeId!: number
+  public travellers!: number
+  public name!: string
 
   public readonly createdAt!: Date
   public readonly updatedAt!: Date
@@ -37,8 +39,8 @@ Quote.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
-    transportationType: {
-      type: DataTypes.STRING,
+    transportationTypeId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     travellers: {
@@ -66,7 +68,7 @@ Quote.belongsTo(Airport, {
 })
 Quote.belongsTo(Transportation, {
   as: "transportation",
-  foreignKey: "transportationType",
+  foreignKey: "transportationTypeId",
 })
 
 export default Quote
