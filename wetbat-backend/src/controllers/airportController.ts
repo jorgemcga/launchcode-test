@@ -2,9 +2,9 @@ import { Request, Response } from "express"
 import * as AirportService from "../services/airportService"
 
 export async function createAirport(req: Request, res: Response) {
-  const { name, code } = req.body
+  const { name, city, country, code } = req.body
   try {
-    const airport = await AirportService.createAirport(name, code)
+    const airport = await AirportService.createAirport(name, city, country, code)
     res.status(201).json(airport)
   } catch (error) {
     console.error(error)
@@ -39,9 +39,9 @@ export async function getAirportById(req: Request, res: Response) {
 
 export async function updateAirport(req: Request, res: Response) {
   const { id } = req.params
-  const { name, code } = req.body
+  const { name, city, country, code } = req.body
   try {
-    const airport = await AirportService.updateAirport(Number(id), name, code)
+    const airport = await AirportService.updateAirport(Number(id), name, city, country, code)
     if (!airport) {
       res.status(404).json({ message: "Airport not found" })
     } else {
