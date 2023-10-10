@@ -1,64 +1,21 @@
-import express, { Request, Response } from "express"
-import Airport from "../models/Airport"
+import express from "express"
+import * as AirportController from "../controllers/airportController"
 
 const router = express.Router()
 
-// Create a new airport
-router.post("/", async (req: Request, res: Response) => {
-  try {
-    const { name, code } = req.body
-    const airport = await Airport.create({ name, code })
-    res.status(201).json(airport)
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ message: "Error creating airport" })
-  }
-})
+// Criar um aeroporto
+router.post("/", AirportController.createAirport)
 
-// Read all airports
-router.get("/", async (req: Request, res: Response) => {
-  try {
-    const airports = await Airport.findAll()
-    res.status(200).json(airports)
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ message: "Error fetching airports" })
-  }
-})
+// Obter todos os aeroportos
+router.get("/", AirportController.getAllAirports)
 
-// Update an airport by ID
-router.put("/:id", async (req: Request, res: Response) => {
-  const { id } = req.params
-  const { name, code } = req.body
-  try {
-    const airport = await Airport.findByPk(id)
-    if (!airport) {
-      return res.status(404).json({ message: "Airport not found" })
-    }
-    airport.name = name
-    airport.code = code
-    await airport.save()
-    res.status(200).json(airport)
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ message: "Error updating airport" })
-  }
-})
+// Obter um aeroporto por ID
+router.get("/:id", AirportController.getAirportById)
 
-// Delete an airport by ID
-router.delete("/:id", async (req: Request, res: Response) => {
-  const { id } = req.params
-  try {
-    const airport = await Airport.findByPk(id)
-    if (!airport) {
-      return res.status(404).json({ message: "Airport not found" })
-    }
-    await airport.destroy()
-    res.status(204).json()
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ message: "Error deleting airport" })
-  }
-})
+// Atualizar um aeroporto por ID
+router.put("/:id", AirportController.updateAirport)
+
+// Excluir um aeroporto por ID
+router.delete("/:id", AirportController.deleteAirport)
 
 export default router

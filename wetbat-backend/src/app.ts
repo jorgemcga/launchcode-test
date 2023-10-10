@@ -13,10 +13,10 @@ app.use(bodyParser.json());
 sequelize
   .sync()
   .then(() => {
-    console.log('Banco de dados conectado');
+    console.log('Database connected');
   })
   .catch((error: Error) => {
-    console.error('Erro ao conectar ao banco de dados:', error);
+    console.error('Error on database connection:', error);
   });
 
 // Rotas para CRUD de aeroportos
@@ -30,5 +30,5 @@ app.use('/quotes', quotesRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
