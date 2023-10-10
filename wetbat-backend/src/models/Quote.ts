@@ -56,7 +56,6 @@ Quote.init(
   }
 )
 
-// Define as associações
 Quote.belongsTo(Airport, {
   as: "originAirport",
   foreignKey: "originAirportId",

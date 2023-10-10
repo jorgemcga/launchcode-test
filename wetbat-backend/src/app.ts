@@ -9,7 +9,6 @@ const app = express();
 
 app.use(bodyParser.json());
 
-// Conecta ao banco de dados
 sequelize
   .sync()
   .then(() => {
@@ -19,13 +18,8 @@ sequelize
     console.error('Error on database connection:', error);
   });
 
-// Rotas para CRUD de aeroportos
 app.use('/airports', airportsRoutes);
-
-// Rotas para CRUD de transportes
 app.use('/transportations', transportationsRoutes);
-
-// Rotas para CRUD de cotações
 app.use('/quotes', quotesRoutes);
 
 const PORT = process.env.PORT || 3000;

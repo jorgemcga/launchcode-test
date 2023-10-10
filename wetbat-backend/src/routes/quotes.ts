@@ -3,7 +3,6 @@ import Quote from "../models/Quote"
 
 const router = express.Router()
 
-// Create a new quote
 router.post("/", async (req: Request, res: Response) => {
   try {
     const {
@@ -27,7 +26,6 @@ router.post("/", async (req: Request, res: Response) => {
   }
 })
 
-// Read all quotes
 router.get("/", async (req: Request, res: Response) => {
   try {
     const quotes = await Quote.findAll()
@@ -38,7 +36,6 @@ router.get("/", async (req: Request, res: Response) => {
   }
 })
 
-// Update a quote by ID
 router.put("/:id", async (req: Request, res: Response) => {
   const { id } = req.params
   const {
@@ -66,7 +63,6 @@ router.put("/:id", async (req: Request, res: Response) => {
   }
 })
 
-// Delete a quote by ID
 router.delete("/:id", async (req: Request, res: Response) => {
   const { id } = req.params
   try {
