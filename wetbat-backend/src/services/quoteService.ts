@@ -16,7 +16,8 @@ export async function createQuote(
     returnDate,
     transportationTypeId,
     travellers,
-    name
+    name,
+    Math.floor(Math.random() * 2000) // creates a random value for test purpose
   )
 }
 

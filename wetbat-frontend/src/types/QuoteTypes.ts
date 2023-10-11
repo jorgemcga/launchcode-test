@@ -16,4 +16,5 @@ export interface IQuoteResponse extends IQuoteRequest {
   originAirport: IAirportResponse
   destinationAirport: IAirportResponse
   transportation: ITransportationResponse
+  price: number
 }

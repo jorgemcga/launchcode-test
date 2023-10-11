@@ -9,7 +9,8 @@ export async function createQuote(
   returnDate: Date,
   transportationTypeId: number,
   travellers: number,
-  name: string
+  name: string,
+  price: number,
 ) {
   return Quote.create({
     originAirportId,
@@ -19,6 +20,7 @@ export async function createQuote(
     transportationTypeId,
     travellers,
     name,
+    price
   })
 }
 

@@ -4,10 +4,13 @@ import { getQuotesService } from "../../services/quotes"
 import { IQuoteResponse } from "../../types/QuoteTypes"
 import { Box, CircularProgress, Grid, Typography } from "@mui/material"
 import Button from "components/button"
+import { useAtom } from "jotai"
+import { isReloadingAtom } from "atomStore"
 
 const QuoteList = () => {
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle")
   const [quotesList, setQuotesList] = useState<IQuoteResponse[]>([] as IQuoteResponse[])
+  const [isReloading, setIsReloading] = useAtom(isReloadingAtom)
 
   const fetchData = async () => {
     setState("loading")
@@ -18,11 +21,15 @@ const QuoteList = () => {
     } else {
       setState("error")
     }
+
+    setIsReloading(false)
   }
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    if (isReloading) {
+      fetchData()
+    }
+  }, [isReloading])
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID #" },
@@ -35,7 +42,7 @@ const QuoteList = () => {
     id: q.id.toString(),
     name: q.name,
     destinationAirport: q.destinationAirport.code,
-    price: "100"
+    price: q.price
   }))
 
   const GetComponentState = {
@@ -54,7 +61,7 @@ const QuoteList = () => {
           Sorry there was an error on fecth data!
         </Grid>
         <Grid item xs={12}>
-          <Button onClick={fetchData}>Try again</Button>
+          <Button onClick={() => setIsReloading(true)}>Try again</Button>
         </Grid>
       </Grid>
     )
@@ -63,7 +70,7 @@ const QuoteList = () => {
   return (
     <Grid item xs={12} padding={2}>
       <Typography variant="h5" component="h1">
-        Quotes List
+        Pending quotes
       </Typography>
       {
         GetComponentState[state]

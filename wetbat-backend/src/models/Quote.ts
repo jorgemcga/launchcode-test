@@ -12,6 +12,7 @@ class Quote extends Model {
   public transportationTypeId!: number
   public travellers!: number
   public name!: string
+  public price!: number
 
   public readonly createdAt!: Date
   public readonly updatedAt!: Date
@@ -51,6 +52,11 @@ Quote.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    price: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+      defaultValue: 0
+    }
   },
   {
     sequelize,

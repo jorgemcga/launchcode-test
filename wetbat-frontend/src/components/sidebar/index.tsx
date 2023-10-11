@@ -28,14 +28,6 @@ const Sidebar = () => {
         <Link to="/" className={classes.link}>
           <ListItem>
             <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText primary="Home" />
-          </ListItem>
-        </Link>
-        <Link to="/quotes" className={classes.link}>
-          <ListItem>
-            <ListItemIcon>
               <AttachMoneyIcon />
             </ListItemIcon>
             <ListItemText primary="Quotes" />
