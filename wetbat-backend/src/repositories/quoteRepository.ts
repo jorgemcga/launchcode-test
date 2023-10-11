@@ -1,20 +1,45 @@
+import Airport from "../models/Airport"
 import Quote from "../models/Quote"
+import Transportation from "../models/Transportation"
 
 export async function createQuote(
-  origin: string,
-  destination: string,
-  date: Date,
-  transportationType: string
+  originAirportId: number,
+  destinationAirportId: number,
+  departureDate: Date,
+  returnDate: Date,
+  transportationTypeId: number,
+  travellers: number,
+  name: string
 ) {
-  return Quote.create({ origin, destination, date, transportationType })
+  return Quote.create({
+    originAirportId,
+    destinationAirportId,
+    departureDate,
+    returnDate,
+    transportationTypeId,
+    travellers,
+    name,
+  })
 }
 
 export async function getAllQuotes() {
-  return Quote.findAll()
+  return Quote.findAll({
+    include: [
+      { model: Airport, as: 'originAirport', attributes: ['id', 'code', 'city', 'country', 'name'] },
+      { model: Airport, as: 'destinationAirport', attributes: ['id', 'code', 'city', 'country', 'name'] },
+      { model: Transportation, as: 'transportation', attributes: ['id', 'name'] },
+    ],
+  })
 }
 
 export async function getQuoteById(id: number) {
-  return Quote.findByPk(id)
+  return Quote.findByPk(id, {
+    include: [
+      { model: Airport, as: 'originAirport', attributes: ['id', 'code', 'city', 'country', 'name'] },
+      { model: Airport, as: 'destinationAirport', attributes: ['id', 'code', 'city', 'country', 'name'] },
+      { model: Transportation, as: 'transportation', attributes: ['id', 'name'] },
+    ],
+  })
 }
 
 export async function updateQuote(

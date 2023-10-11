@@ -1,16 +1,22 @@
 import * as QuoteRepository from "../repositories/quoteRepository"
 
 export async function createQuote(
-  origin: string,
-  destination: string,
-  date: Date,
-  transportationType: string
+  originAirportId: number,
+  destinationAirportId: number,
+  departureDate: Date,
+  returnDate: Date,
+  transportationTypeId: number,
+  travellers: number,
+  name: string
 ) {
   return QuoteRepository.createQuote(
-    origin,
-    destination,
-    date,
-    transportationType
+    originAirportId,
+    destinationAirportId,
+    departureDate,
+    returnDate,
+    transportationTypeId,
+    travellers,
+    name
   )
 }
 
@@ -23,14 +29,14 @@ export async function getQuoteById(id: number) {
 }
 
 export async function updateQuote(
-    id: number,
-    originAirportId: number,
-    destinationAirportId: number,
-    departureDate: Date,
-    returnDate: Date,
-    transportationTypeId: number,
-    travellers: number,
-    name: string
+  id: number,
+  originAirportId: number,
+  destinationAirportId: number,
+  departureDate: Date,
+  returnDate: Date,
+  transportationTypeId: number,
+  travellers: number,
+  name: string
 ) {
   return QuoteRepository.updateQuote(
     id,

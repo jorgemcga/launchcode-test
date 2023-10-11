@@ -2,13 +2,24 @@ import { Request, Response } from "express"
 import * as QuoteService from "../services/quoteService"
 
 export async function createQuote(req: Request, res: Response) {
-  const { origin, destination, date, transportationType } = req.body
+  const {
+    originAirportId,
+    destinationAirportId,
+    departureDate,
+    returnDate,
+    transportationTypeId,
+    travellers,
+    name,
+  } = req.body
   try {
     const quote = await QuoteService.createQuote(
-      origin,
-      destination,
-      date,
-      transportationType
+      originAirportId,
+      destinationAirportId,
+      departureDate,
+      returnDate,
+      transportationTypeId,
+      travellers,
+      name
     )
     res.status(201).json(quote)
   } catch (error) {
@@ -51,8 +62,8 @@ export async function updateQuote(req: Request, res: Response) {
     returnDate,
     transportationTypeId,
     travellers,
-    name
-    } = req.body
+    name,
+  } = req.body
   try {
     const quote = await QuoteService.updateQuote(
       Number(id),
