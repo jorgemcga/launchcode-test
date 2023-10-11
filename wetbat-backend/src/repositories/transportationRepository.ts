@@ -1,7 +1,7 @@
 import Transportation from "../models/Transportation"
 
-export async function createTransportation(name: string, type: string) {
-  return Transportation.create({ name, type })
+export async function createTransportation(name: string) {
+  return Transportation.create({ name })
 }
 
 export async function getAllTransportations() {

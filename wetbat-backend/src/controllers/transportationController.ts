@@ -2,11 +2,10 @@ import { Request, Response } from "express"
 import * as TransportationService from "../services/transportationService"
 
 export async function createTransportation(req: Request, res: Response) {
-  const { name, type } = req.body
+  const { name } = req.body
   try {
     const transportation = await TransportationService.createTransportation(
-      name,
-      type
+      name
     )
     res.status(201).json(transportation)
   } catch (error) {
@@ -44,7 +43,7 @@ export async function getTransportationById(req: Request, res: Response) {
 
 export async function updateTransportation(req: Request, res: Response) {
   const { id } = req.params
-  const { name, type } = req.body
+  const { name } = req.body
   try {
     const transportation = await TransportationService.updateTransportation(Number(id), name)
     if (!transportation) {

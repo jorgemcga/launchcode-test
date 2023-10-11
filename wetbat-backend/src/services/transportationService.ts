@@ -1,7 +1,7 @@
 import * as TransportationRepository from "../repositories/transportationRepository"
 
-export async function createTransportation(name: string, type: string) {
-  return TransportationRepository.createTransportation(name, type)
+export async function createTransportation(name: string) {
+  return TransportationRepository.createTransportation(name)
 }
 
 export async function getAllTransportations() {
