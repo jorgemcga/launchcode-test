@@ -1,11 +1,11 @@
-import { AppBar, Toolbar, Typography, Button } from "@mui/material"
+import { AppBar, Toolbar, Typography } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { IThemeWetBat } from "../../styles/theme"
 import DashboardIcon from "@mui/icons-material/Dashboard"
 
 const useStyles = makeStyles((theme: IThemeWetBat) => ({
   appBar: {
-    background: `${theme.defaultColors.color2} !important`, // Cor de fundo do cabeçalho
+    background: `${theme.defaultColors.color2} !important`,
   },
   title: {
     display: "flex",
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: IThemeWetBat) => ({
     },
   },
   button: {
-    marginRight: theme.spacing(2), // Espaço entre botões
+    marginRight: theme.spacing(2)
   },
 }))
 
