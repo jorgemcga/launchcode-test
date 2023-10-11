@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Grid, ThemeProvider } from "@mui/material"
+import { ThemeProvider as LegacyThemeProvider } from "@mui/styles"
+import { theme } from "./styles/theme"
+import Routes from "./routes"
+import Header from "./components/header"
+import Sidebar from "./components/sidebar"
+import { BrowserRouter } from "react-router-dom"
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <LegacyThemeProvider theme={theme()}>
+      <ThemeProvider theme={theme()}>
+        <BrowserRouter>  
+          <Header />
+          <Grid container>
+            <Sidebar />
+            <Grid item xs={9} padding={3}>
+              <Routes />
+            </Grid>
+          </Grid>
+        </BrowserRouter>
+      </ThemeProvider>
+    </LegacyThemeProvider>
+  )
 }
 
-export default App;
+export default App

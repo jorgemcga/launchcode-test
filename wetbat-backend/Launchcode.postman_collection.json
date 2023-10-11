@@ -1,0 +1,412 @@
+{
+	"info": {
+		"_postman_id": "e8e7e11e-5860-4663-9e03-f9d273888802",
+		"name": "Launchcode",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6298274"
+	},
+	"item": [
+		{
+			"name": "Airports",
+			"item": [
+				{
+					"name": "Get Airports",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/airports",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Airport by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/airports/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airports",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Airport",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"name\",\r\n    \"city\": \"city\",\r\n    \"country\": \"country\",\r\n    \"code\": \"code\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/airports",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Airport",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"new name\",\r\n    \"city\": \"city\",\r\n    \"country\": \"country\",\r\n    \"code\": \"code\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/airports/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airports",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Airport",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/airports/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airports",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transportations",
+			"item": [
+				{
+					"name": "Get Transportations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/transportations",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transportations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transportation By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/transportations/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transportations",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Transportations",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"name\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/transportations",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transportations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Transportations",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"new name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/transportations/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transportations",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Transportations",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/transportations/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"transportations",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quotes",
+			"item": [
+				{
+					"name": "Get Quotes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/quotes",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"quotes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Quote by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/quotes/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"quotes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Quotes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"originAirportId\": 1,\r\n    \"destinationAirportId\": 2,\r\n    \"departureDate\": \"2023-12-12 12:00:00\",\r\n    \"returnDate\": \"2023-12-15 12:00:00\",\r\n    \"transportationTypeId\": 3,\r\n    \"travellers\": 2,\r\n    \"name\": \"Jorge\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/quotes",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"quotes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Quotes",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"originAirportId\": 1,\r\n    \"destinationAirportId\": 3,\r\n    \"departureDate\": \"2023-12-12 12:00:00\",\r\n    \"returnDate\": \"2023-12-15 12:00:00\",\r\n    \"transportationTypeId\": 2,\r\n    \"travellers\": 1,\r\n    \"name\": \"Edited Jorge\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/quotes/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"quotes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Transportations Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/quotes/:id",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"quotes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
