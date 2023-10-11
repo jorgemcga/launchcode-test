@@ -21,7 +21,7 @@ const QuoteList = () => {
   }
 
   useEffect(() => {
-    // fetchData()
+    fetchData()
   }, [])
 
   const columns: GridColDef[] = [
