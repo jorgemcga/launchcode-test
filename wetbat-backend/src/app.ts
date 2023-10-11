@@ -5,6 +5,7 @@ import airportsRoutes from "./routes/airports"
 import transportationsRoutes from "./routes/transportations"
 import quotesRoutes from "./routes/quotes"
 import { initializeData } from "./scripts/initializeData"
+import cors from 'cors'
 
 console.log("Starting app")
 const app = express()
@@ -21,6 +22,7 @@ sequelize
     console.error("Error on database connection:", error)
   })
 
+app.use(cors()) // only for test purpose
 app.use("/airports", airportsRoutes)
 app.use("/transportations", transportationsRoutes)
 app.use("/quotes", quotesRoutes)
