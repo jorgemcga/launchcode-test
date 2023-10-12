@@ -1,15 +1,14 @@
 import { DataGrid, GridColDef, GridRowsProp } from "@mui/x-data-grid"
 import { useEffect, useState } from "react"
 import { getQuotesService } from "../../services/quotes"
-import { IQuoteResponse } from "../../types/QuoteTypes"
 import { Box, CircularProgress, Grid, Typography } from "@mui/material"
 import Button from "components/button"
 import { useAtom } from "jotai"
-import { isReloadingAtom } from "atomStore"
+import { isReloadingAtom, quotesAtom } from "atomStore"
 
 const QuoteList = () => {
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle")
-  const [quotesList, setQuotesList] = useState<IQuoteResponse[]>([] as IQuoteResponse[])
+  const [quotesList, setQuotesList] = useAtom(quotesAtom)
   const [isReloading, setIsReloading] = useAtom(isReloadingAtom)
 
   const fetchData = async () => {
